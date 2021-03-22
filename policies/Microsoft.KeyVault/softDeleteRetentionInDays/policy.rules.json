@@ -1,0 +1,17 @@
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.KeyVault/vaults"
+      },
+      {
+        "field": "Microsoft.KeyVault/vaults/softDeleteRetentionInDays",
+        "less": "[parameters('softDeleteRetentionInDays')]"
+      }
+    ]
+  },
+  "then": {
+    "effect": "[parameters('effect')]"
+  }
+}

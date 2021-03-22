@@ -1,0 +1,44 @@
+{
+    "properties": {
+        "displayName": "AAD NTLM v1 should be disabled",
+        "policyType": "Custom",
+        "mode": "All",
+        "metadata": {
+            "category": "Azure Active Directory"
+        },
+        "parameters": {
+            "effect": {
+                "allowedValues": [
+                    "Audit",
+                    "Disabled"
+                ],
+                "defaultValue": "Audit",
+                "metadata": {
+                    "description": "Enable or disable the execution of the policy",
+                    "displayName": "Effect"
+                },
+                "type": "String"
+            }
+        },
+        "policyRule": {
+            "if": {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.AAD/domainServices"
+                    },
+                    {
+                        "field": "Microsoft.AAD/domainServices/domainSecuritySettings.ntlmV1",
+                        "notEquals": "Enabled"
+                    }
+                ]
+            },
+            "then": {
+                "effect": "[parameters('effect')]"
+            }
+        }
+    },
+    "id": "/subscriptions/dbacdf7c-cd4a-4866-8865-a4ef2c4c2499/providers/Microsoft.Authorization/policyDefinitions/a16a3e40-e1d3-4776-9208-e7e91ba4ab46",
+    "type": "Microsoft.Authorization/policyDefinitions",
+    "name": "a16a3e40-e1d3-4776-9208-e7e91ba4ab46"
+}

@@ -1,0 +1,29 @@
+# File: .github/workflows/workflow.yml
+
+on: [push]
+
+name: Deploy Azure Policies
+
+jobs:
+
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - name: Create or Update Azure Policies
+      uses: azure/manage-azure-policy@v0
+      with:
+        paths: |
+          policies/Microsoft.AAD/**
+          policies/Microsoft.Compute/disks/**
+          policies/Microsoft.Compute/virtualMachines/**
+          policies/Microsoft.DBforMySQL/**
+          policies/Microsoft.KeyVault/**
+          policies/Microsoft.Sql/**

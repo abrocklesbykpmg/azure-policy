@@ -1,0 +1,52 @@
+{
+    "properties": {
+        "displayName": "SQL server minimum TLS version should be v1.2",
+        "policyType": "Custom",
+        "mode": "All",
+        "metadata": {
+            "category": "SQL"
+        },
+        "parameters": {
+            "effect": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Effect",
+                    "description": "Enable or disable the execution of the policy"
+                },
+                "allowedValues": [
+                    "Audit",
+                    "Disabled"
+                ],
+                "defaultValue": "Audit"
+            },
+            "minimalTlsVersion": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Minimum TLS Version",
+                    "description": "The minimum TLS version for the SQL server"
+                },
+                "defaultValue": "1.2"
+            }
+        },
+        "policyRule": {
+            "if": {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Sql/servers"
+                    },
+                    {
+                        "field": "Microsoft.Sql/servers/minimalTlsVersion",
+                        "notEquals": "[parameters('minimalTlsVersion')]"
+                    }
+                ]
+            },
+            "then": {
+                "effect": "[parameters('effect')]"
+            }
+        }
+    },
+    "id": "/subscriptions/dbacdf7c-cd4a-4866-8865-a4ef2c4c2499/providers/Microsoft.Authorization/policyDefinitions/db17e480-418d-477f-a89c-f17854e39bc7",
+    "type": "Microsoft.Authorization/policyDefinitions",
+    "name": "db17e480-418d-477f-a89c-f17854e39bc7"
+}

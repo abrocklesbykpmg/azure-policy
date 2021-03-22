@@ -1,0 +1,17 @@
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.AAD/domainServices"
+      },
+      {
+        "field": "Microsoft.AAD/domainServices/domainSecuritySettings.ntlmV1",
+        "notEquals": "Enabled"
+      }
+    ]
+  },
+  "then": {
+    "effect": "[parameters('effect')]"
+  }
+}

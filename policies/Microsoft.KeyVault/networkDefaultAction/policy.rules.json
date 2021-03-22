@@ -1,0 +1,17 @@
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.KeyVault/vaults"
+      },
+      {
+        "field": "Microsoft.KeyVault/vaults/networkAcls/defaultAction",
+        "notEquals": "Deny"
+      }
+    ]
+  },
+  "then": {
+    "effect": "[parameters('effect')]"
+  }
+}

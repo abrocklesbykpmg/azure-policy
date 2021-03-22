@@ -1,0 +1,17 @@
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.DBforMySQL/servers"
+      },
+      {
+        "field": "Microsoft.DBforMySQL/servers/minimalTlsVersion",
+        "notEquals": "[parameters('minimalTlsVersion')]"
+      }
+    ]
+  },
+  "then": {
+    "effect": "[parameters('effect')]"
+  }
+}

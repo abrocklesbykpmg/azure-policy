@@ -1,0 +1,22 @@
+{
+    "effect": {
+        "allowedValues": [
+            "Audit",
+            "Disabled"
+        ],
+        "defaultValue": "Audit",
+        "metadata": {
+            "description": "Enable or disable the execution of the policy",
+            "displayName": "Effect"
+        },
+        "type": "String"
+    },
+    "softDeleteRetentionInDays": {
+        "defaultValue": 30,
+        "metadata": {
+            "description": "The number of days deleted files should be retiained for",
+            "displayName": "Soft Delete Retention in Days"
+        },
+        "type": "Integer"
+    }
+}

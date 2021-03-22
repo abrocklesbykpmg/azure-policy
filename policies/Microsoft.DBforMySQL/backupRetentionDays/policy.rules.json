@@ -1,0 +1,17 @@
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.DBforMySQL/servers"
+      },
+      {
+        "field": "Microsoft.DBforMySQL/servers/storageProfile.backupRetentionDays",
+        "less": "[parameters('backupRetentionDays')]"
+      }
+    ]
+  },
+  "then": {
+    "effect": "[parameters('effect')]"
+  }
+}

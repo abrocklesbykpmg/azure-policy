@@ -1,0 +1,44 @@
+{
+    "properties": {
+        "displayName": "AAD TLS v1 should be disabled",
+        "policyType": "Custom",
+        "mode": "All",
+        "metadata": {
+            "category": "Azure Active Directory"
+        },
+        "parameters": {
+            "effect": {
+                "allowedValues": [
+                    "Audit",
+                    "Disabled"
+                ],
+                "defaultValue": "Audit",
+                "metadata": {
+                    "description": "Enable or disable the execution of the policy",
+                    "displayName": "Effect"
+                },
+                "type": "String"
+            }
+        },
+        "policyRule": {
+            "if": {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.AAD/domainServices"
+                    },
+                    {
+                        "field": "Microsoft.AAD/domainServices/domainSecuritySettings.tlsV1",
+                        "notEquals": "Enabled"
+                    }
+                ]
+            },
+            "then": {
+                "effect": "[parameters('effect')]"
+            }
+        }
+    },
+    "id": "/subscriptions/dbacdf7c-cd4a-4866-8865-a4ef2c4c2499/providers/Microsoft.Authorization/policyDefinitions/6c123c42-fcec-4343-8ce5-3232385f69e0",
+    "type": "Microsoft.Authorization/policyDefinitions",
+    "name": "6c123c42-fcec-4343-8ce5-3232385f69e0"
+}

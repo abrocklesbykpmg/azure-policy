@@ -1,0 +1,17 @@
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.AAD/domainServices"
+      },
+      {
+        "field": "Microsoft.AAD/domainServices/notificationSettings.notifyGlobalAdmins",
+        "notEquals": "Enabled"
+      }
+    ]
+  },
+  "then": {
+    "effect": "[parameters('effect')]"
+  }
+}

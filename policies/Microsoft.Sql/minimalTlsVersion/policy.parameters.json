@@ -1,0 +1,22 @@
+{
+    "effect": {
+        "allowedValues": [
+            "Audit",
+            "Disabled"
+        ],
+        "defaultValue": "Audit",
+        "metadata": {
+            "description": "Enable or disable the execution of the policy",
+            "displayName": "Effect"
+        },
+        "type": "String"
+    },
+    "minimalTlsVersion": {
+        "defaultValue": "1.2",
+        "metadata": {
+            "description": "The minimum TLS version for the SQL server",
+            "displayName": "Minimum TLS Version"
+        },
+        "type": "String"
+    }
+}

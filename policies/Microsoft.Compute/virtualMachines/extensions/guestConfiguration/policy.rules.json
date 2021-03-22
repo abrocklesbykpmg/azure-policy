@@ -1,0 +1,49 @@
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Compute/virtualMachines"
+      },
+      {
+        "anyOf": [
+          {
+            "allOf": [
+              {
+                "field": "Microsoft.Compute/imagePublisher",
+                "like": "microsoft*"
+              },
+              {
+                "field": "Microsoft.Compute/imageOffer",
+                "like": "windows*"
+              }
+            ]
+          },
+          {
+            "field": "Microsoft.Compute/virtualMachines/storageProfile.osDisk.osType",
+            "like": "windows*"
+          }
+        ]
+      }
+    ]
+  },
+  "then": {
+    "effect": "[parameters('effect')]",
+    "details": {
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "AzurePolicyforWindows",
+      "existenceCondition": {
+        "allOf": [
+          {
+            "field": "Microsoft.Compute/virtualMachines/extensions/publisher",
+            "equals": "Microsoft.GuestConfiguration"
+          },
+          {
+            "field": "Microsoft.Compute/virtualMachines/extensions/type",
+            "equals": "ConfigurationforWindows"
+          }
+        ]
+      }
+    }
+  }
+}
