@@ -1,6 +1,9 @@
 # File: .github/workflows/workflow.yml
 
-on: [push]
+on:
+  push:
+    branches:
+    - main
 
 name: Deploy Azure Policies
 
@@ -27,3 +30,13 @@ jobs:
           policies/Microsoft.DBforMySQL/**
           policies/Microsoft.KeyVault/**
           policies/Microsoft.Sql/**
+          initiatives/**
+        assignments: assign.dev.json
+        mode: incremental
+    
+    - name: Start Azure Policy Compliance Scan
+      uses: azure/policy-compliance-scan@v0
+      with:
+        scopes: |
+          /subscriptions/dbacdf7c-cd4a-4866-8865-a4ef2c4c2499
+        wait: false

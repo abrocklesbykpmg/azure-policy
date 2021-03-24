@@ -1,0 +1,20 @@
+{
+    "properties": {
+        "displayName": "Audit SQL Security",
+        "description": "Audits SQL Server Security",
+        "metadata": {
+            "assignedBy": "abrocklesby.com"
+        },
+        "enforcementMode": "DoNotEnforce",
+        "notScopes": [],
+        "policyDefinitionId": "/subscriptions/dbacdf7c-cd4a-4866-8865-a4ef2c4c2499/providers/Microsoft.Authorization/policySetDefinitions/09aca37a-a72b-482c-bc41-b984a5978647",
+        "parameters": {
+            "effect": {
+                "value": "Audit"
+            }
+        }
+    },
+    "id": "/subscriptions/dbacdf7c-cd4a-4866-8865-a4ef2c4c2499/providers/Microsoft.Authorization/policyAssignments/8b4ad8e229a3478da15cc286",
+    "type": "Microsoft.Authorization/policyAssignments",
+    "name": "8b4ad8e229a3478da15cc286"
+}

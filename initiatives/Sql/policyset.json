@@ -1,0 +1,51 @@
+{
+    "properties": {
+        "displayName": "SQL Security",
+        "description": "Audit the SQL Server Security Settings.",
+        "policyType": "Custom",
+        "metadata": {
+            "version": "1.0.0",
+            "category": "SQL"
+        },
+        "parameters": {
+            "effect": {
+                "type": "string",
+                "defaultValue": "Audit",
+                "allowedValues": [
+                    "Audit",
+                    "Disabled"
+                ],
+                "metadata": {
+                    "displayName": "Effect",
+                    "description": "Enable or disable the execution of the policy"
+                }
+            }
+        },
+        "policyDefinitions": [
+            {
+                "policyDefinitionReferenceId": "MinimumTlsVersion",
+                "policyDefinitionId": "/subscriptions/dbacdf7c-cd4a-4866-8865-a4ef2c4c2499/providers/Microsoft.Authorization/policyDefinitions/db17e480-418d-477f-a89c-f17854e39bc7",
+                "parameters": {
+                    "effect": {
+                        "value": "[parameters('effect')]"
+                    }
+                },
+                "groupNames": []
+            },
+            {
+                "policyDefinitionReferenceId": "PublicNetworkAccess",
+                "policyDefinitionId": "/subscriptions/dbacdf7c-cd4a-4866-8865-a4ef2c4c2499/providers/Microsoft.Authorization/policyDefinitions/52d46b07-8d29-4b06-8847-daf6cbe0330e",
+                "parameters": {
+                    "effect": {
+                        "value": "[parameters('effect')]"
+                    }
+                },
+                "groupNames": []
+            }
+        ],
+        "policyDefinitionGroups": []
+    },
+    "id": "/subscriptions/dbacdf7c-cd4a-4866-8865-a4ef2c4c2499/providers/Microsoft.Authorization/policySetDefinitions/09aca37a-a72b-482c-bc41-b984a5978647",
+    "type": "Microsoft.Authorization/policySetDefinitions",
+    "name": "09aca37a-a72b-482c-bc41-b984a5978647"
+}
